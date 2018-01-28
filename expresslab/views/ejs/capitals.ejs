@@ -1,0 +1,19 @@
+<%- layout('layout.ejs') %>
+<h1><%- title %></h1>
+<table>
+    <tr>
+        <th>Capital</th>
+        <th>Province</th>
+    </tr>
+    <% for(var i=0; i < list.length; i++) { %>
+        <tr>
+             <td><%= list[i].capital %></td>
+             <td><%= list[i].province %></td>
+        </tr>
+    <% } %>
+</table>
+
+<br/>
+<div id="right">
+    Back to <a href="/">JSON feeds</a>
+</div>

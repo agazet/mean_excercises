@@ -1,0 +1,20 @@
+<%- layout('layout.ejs') %>
+<link href="style.css" rel="stylesheet" type="text/css">    
+<h1><%- title %></h1>
+<table>
+    <tr>
+        <th>Country</th>
+        <th>Population</th>
+    </tr>
+    <% for(var i=0; i < list.length; i++) { %>
+        <tr>
+             <td><%= list[i].country %></td>
+             <td><%= list[i].population %></td>
+        </tr>
+    <% } %>
+</table>
+
+<br/>
+<div align="right">
+    Back to <a href="/">JSON feeds</a>
+</div>

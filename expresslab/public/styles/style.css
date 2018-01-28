@@ -1,0 +1,46 @@
+body {
+    background-color: lightgray;
+}
+
+
+h1 {
+    color: darkgreen;
+    text-align: center;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+ul {
+    font-family: verdana;
+    font-size: 18px;
+}
+
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid whitesmoke;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: whitesmoke;}
+
+tr:hover {background-color: lightgreen;}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: green;
+    color: white;
+}
+
+#right {
+    text-align: right;
+}
