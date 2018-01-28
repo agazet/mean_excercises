@@ -11,25 +11,13 @@ app.get("/",(req, res) => {
     res.render("ejs/index", {title: "View JSON feeds"});
 });
 
-app.get("/api/countries",(req, res) => {
-    let list = JSON.parse(readJsonFile("./geo_data/ten_most_populated_countries.json"));
-    res.render("ejs/countries", {title: "Most Populated Countries", list: list});
-});
+getJsonContentAsPageWithTable("countries","./geo_data/ten_most_populated_countries.json", "Most Populated Countries");
 
-app.get("/api/capitals",(req, res) => {
-    let list = JSON.parse(readJsonFile("./geo_data/canada_capitals.json"));
-    res.render("ejs/capitals", {title: "Canada Province Capitals", list: list});
-});
+getJsonContentAsPageWithTable("capitals","./geo_data/canada_capitals.json", "Canada Province Capitals");
 
-app.get("/api/countriesJSON", (req, res)=>{
-    res.set("content-Type", "application/json");
-    res.send(readJsonFile("./geo_data/ten_most_populated_countries.json"));
-});
+getJsonContent("/api/countriesJSON", "./geo_data/ten_most_populated_countries.json");
 
-app.get("/api/capitalsJSON", (req, res)=>{
-    res.set("content-Type", "application/json");
-    res.send(readJsonFile("./geo_data/canada_capitals.json"));
-});
+getJsonContent("/api/capitalsJSON", "./geo_data/canada_capitals.json");
 
 app.listen(PORT, function(err, res) {
     if (err) {
@@ -42,4 +30,18 @@ app.listen(PORT, function(err, res) {
 function readJsonFile(filename){
     const fs = require('fs');
     return fs.readFileSync(filename);
+}
+
+function getJsonContent(path, filepath){
+    app.get(path, (req, res)=>{
+        res.set("content-Type", "application/json");
+        res.send(readJsonFile(filepath));
+    });
+}
+
+function getJsonContentAsPageWithTable(apiName, filepath, title){
+    app.get("/api/" + apiName, (req, res) => {
+        let list = JSON.parse(readJsonFile(filepath));
+        res.render("ejs/"+apiName, {title: title, list: list});
+    });
 }
