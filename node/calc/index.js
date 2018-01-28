@@ -1,4 +1,8 @@
 module.exports.calculate = function(formula, radius){
+    if(isNaN(radius)){
+        return "Radius should be a number";
+    }
+    
     let value = 0;
     const PI = 3.1416;
 
@@ -19,8 +23,7 @@ module.exports.calculate = function(formula, radius){
             value = (4*PI*radius*radius*radius)/3;
             break;
         default:
-            console.log("Default");
-            formula = "unknown";
+            return "Unknown formula, use: a - area, p - perimeter, v - volume";
     }
 
     value = value.toFixed(2);
