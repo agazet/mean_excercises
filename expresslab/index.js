@@ -3,6 +3,7 @@ let app = express();
 const PORT = 3000;
 
 let ejsEngine = require("ejs-locals");
+
 app.use(express.static(__dirname + '/public'));
 app.engine("ejs", ejsEngine);           // support master pages
 app.set("view engine", "ejs");          // ejs view engine
